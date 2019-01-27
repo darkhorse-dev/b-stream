@@ -1,0 +1,28 @@
+{
+    "name": "b-stream",
+    "version": "1.0.0",
+    "repository": "git@github.com:duranhumes/b-stream.git",
+    "author": "Duran Humes <duranhumes@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "postinstall": "yarn prettier",
+        "prettier": "npx prettier --write '**/*.{ts,tsx,js,jsx,json}'"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.(ts,tsx,js,jsx,json)": [
+            "yarn prettier",
+            "yarn lint:fix",
+            "git add"
+        ]
+    },
+    "devDependencies": {
+        "husky": "^1.2.0",
+        "lint-staged": "^8.1.0",
+        "prettier": "^1.15.3"
+    }
+}

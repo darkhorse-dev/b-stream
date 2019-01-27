@@ -1,0 +1,42 @@
+version: '3'
+services:
+    mysql:
+        container_name: mysql
+        image: mysql:5.7
+        restart: unless-stopped
+        env_file:
+            - ./.env
+        environment:
+            - character-set-server=utf8mb4
+            - collation-server=utf8mb4_col
+        volumes:
+            - ./data/mysql:/var/lib/mysql
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+        ports:
+            - '3306:3306'
+    redis:
+        container_name: redis
+        image: redis:5
+        restart: unless-stopped
+        env_file:
+            - ./.env
+        volumes:
+            - ./data/redis:/data
+        ports:
+            - '6379:6379'
+    api:
+        container_name: api
+        restart: unless-stopped
+        build: .
+        env_file: .env
+        volumes:
+            - .:/usr/src/app
+            - /usr/src/app/node_modules/
+        ports:
+            - '8080:8080'
+        depends_on:
+            - mysql
+            - redis
+        links:
+            - mysql
+            - redis

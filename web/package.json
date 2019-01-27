@@ -1,0 +1,80 @@
+{
+    "name": "b-stream-web",
+    "version": "1.0.0",
+    "repository": "git@github.com:duranhumes/b-stream.git",
+    "author": "Duran Humes <duranhumes@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "test": "jest",
+        "dev": "next src",
+        "build": "next build src",
+        "start": "next start src",
+        "postinstall": "yarn prettier && yarn lint",
+        "lint": "npx tslint --project tsconfig.json",
+        "lint:fix": "npx tslint --project tsconfig.json --fix",
+        "prettier": "npx prettier --write '**/*.{ts,tsx,js,jsx,json}'"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.(ts,tsx,js,jsx,json)": [
+            "yarn prettier",
+            "yarn lint:fix",
+            "git add"
+        ]
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "babel-plugin-import": "^1.11.0",
+        "dotenv-safe": "^6.1.0",
+        "dotenv-webpack": "^1.5.7",
+        "next": "^7.0.2",
+        "next-images": "^1.0.3",
+        "next-page-transitions": "^1.0.0-alpha.4",
+        "react": "^16.7.0",
+        "react-dom": "^16.7.0",
+        "react-redux": "^6.0.0",
+        "redux": "^4.0.1",
+        "redux-devtools-extension": "^2.13.7",
+        "redux-thunk": "^2.3.0",
+        "styled-components": "^4.1.3",
+        "universal-cookie": "^3.0.7"
+    },
+    "devDependencies": {
+        "@types/enzyme": "^3.1.15",
+        "@types/enzyme-adapter-react-16": "^1.0.3",
+        "@types/jest": "^23.3.10",
+        "@types/next": "^7.0.5",
+        "@types/node": "^10.12.18",
+        "@types/react": "^16.7.17",
+        "@types/react-dom": "^16.0.11",
+        "@types/react-redux": "^6.0.11",
+        "@types/redux": "^3.6.31",
+        "@types/redux-devtools-extension": "^2.13.2",
+        "@types/redux-thunk": "^2.1.32",
+        "@types/styled-components": "^4.1.4",
+        "@types/universal-cookie": "^2.2.0",
+        "@zeit/next-css": "^1.0.1",
+        "@zeit/next-typescript": "1.1.1",
+        "babel-core": "7.0.0-bridge.0",
+        "babel-jest": "23.6.0",
+        "babel-plugin-styled-components": "1.10.0",
+        "cross-env": "^5.2.0",
+        "enzyme": "^3.8.0",
+        "enzyme-adapter-react-16": "^1.7.1",
+        "husky": "^1.3.0",
+        "jest": "^23.6.0",
+        "lint-staged": "^8.1.0",
+        "prettier": "^1.15.3",
+        "react-addons-test-utils": "^15.6.2",
+        "react-test-renderer": "^16.7.0",
+        "tslint": "^5.12.0",
+        "tslint-config-airbnb": "^5.11.1",
+        "tslint-config-prettier": "^1.17.0",
+        "tslint-react": "^3.6.0",
+        "typescript": "^3.2.2"
+    }
+}

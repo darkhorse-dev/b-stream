@@ -1,0 +1,11 @@
+.DS_Store
+**/.DS_Store
+/node_modules
+.next
+**/.next
+.env
+**/.env
+.history
+**/.history
+inspo/
+**/inspo
